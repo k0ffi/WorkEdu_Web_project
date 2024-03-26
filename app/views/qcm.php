@@ -28,7 +28,7 @@
         
         <h1>QCM</h1>
         <a href="<?=ROOT?>createqcm">Créer un QCM</a>
-        <a href="<?=ROOT?>voirqcm">Voir les QCM</a>
+        <a href="<?=ROOT?>do_qcm">Voir les QCM</a>
 
     </main>
 

@@ -22,17 +22,17 @@
 
     <main>        
         <h1>Créer QCM</h1>
-
+        <div class="form-container" >
         <form method="post" >
 
         
         <label for="cour">Cour :</label><br>
         <select id="cour" name="cour">
-    <option value="informatique" selected>Informatique</option>
-    <option value="mathematique">Mathematique</option>
-    <option value="biophysique">Biophysique</option>
+        <option value="informatique" selected>Informatique</option>
+        <option value="mathematique">Mathematique</option>
+        <option value="biophysique">Biophysique</option>
 
-  </select><br><br>
+        </select><br><br>
 
         <label for="question">Question :</label><br>
         <input type="text" id="question" name="question" required><br><br>
@@ -50,9 +50,8 @@
         <input type="text" id="proposition3" name="proposition3" required><br><br>
         <input type="hidden" name="save" value="sauvegardeQCM">
         <input type="submit" value="Créer QCM">
-    </form>
-
-
+        </form>
+    </div>
     </main>
 
     <footer>
