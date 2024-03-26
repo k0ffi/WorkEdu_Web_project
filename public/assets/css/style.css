@@ -1,0 +1,36 @@
+:root {
+    /* couleurs pour le mode clair */
+    --first-color: #24262b;
+    --second-color: #fff;
+    
+    /* dark mode */
+    --first-dcolor: #fff;
+    --second-dcolor: #0d1321;
+
+
+    --text-color1: #fff;
+    --text-color2: #49a078;
+    --text-color3: #0d1321;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;   
+}
+
+body {
+    background-color: var(--text-color2);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+main {
+    padding: 125px 50px 50px;
+    flex-grow: 1;
+}
