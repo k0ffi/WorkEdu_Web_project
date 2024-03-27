@@ -26,7 +26,8 @@
             <p>Bienvenue <?php echo $_SESSION['username'] ?></p>
         <?php  endif; ?>
         
-        <h1>ACCUEIL</h1>
+        <h1>ACCUEIL</h1>    
+        <p>test</p>
 
     </main>
 
