@@ -28,6 +28,7 @@
         
         <h1>ACCUEIL</h1>    
         <p>test</p>
+        <p>salut mario</p>
 
     </main>
 
