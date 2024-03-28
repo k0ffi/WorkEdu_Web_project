@@ -6,4 +6,16 @@
 	<proposition1>0</proposition1>
 	<proposition2>1</proposition2>
 	<proposition3>0/1</proposition3>
+	</qcm><qcm>
+	<question>quel tyoe de langage  du  C </question>
+	<reponse>bas niveau</reponse>
+	<proposition1>bas niveau</proposition1>
+	<proposition2>haut niveau </proposition2>
+	<proposition3>moyen niveau</proposition3>
+	</qcm><qcm>
+	<question>quel tyoe de langage  du  C </question>
+	<reponse>bas niveau </reponse>
+	<proposition1>haut niveau </proposition1>
+	<proposition2>moyen niveau </proposition2>
+	<proposition3>bas niveau</proposition3>
 	</qcm></donnees>

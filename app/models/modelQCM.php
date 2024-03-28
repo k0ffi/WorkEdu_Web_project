@@ -6,12 +6,12 @@ class ModelQCM {
 
 
     
-public  function recupererQCM($cheminFichier) {
+public  function recupererQCM($cour,$cheminFichier) {
             $questions = array();
         
             // Vérifier si le fichier existe
             if (file_exists($cheminFichier)) {
-                $xml_content = simplexml_load_file($cheminFichier. '/' . $_POST['cour'] . '.xml');
+                $xml_content = simplexml_load_file($cheminFichier. '/' . $cour . '.xml');
         
                 // Parcourir chaque élément "qcm" dans le document XML
                 foreach ($xml_content->qcm as $qcm) {
@@ -103,6 +103,7 @@ public  function recupererQCM($cheminFichier) {
         }
     
         // Ajouter l'élément <qcm> à la racine
+    
         
         $racine->appendChild($qcm);
         
