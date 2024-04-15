@@ -21,20 +21,18 @@
     </header>
 
     <main>
-        <h1>Aurevoir <?php echo $_SESSION['firstname'] ?></h1>
+        <h1>Aurevoir <?php echo $data['firstname'] . " (" . $data['username'] . ")"?></h1>
         <p>Déconnexion réussie.</p>
     </main>
-
+    <footer>
+        <?php $this->view("footer", $data); ?>
+    </footer>
     <?php unset($_SESSION['username']); ?>
     <?php unset($_SESSION['firstname']); ?>
     <?php unset($_SESSION['name']); ?>
     <?php unset($_SESSION['password']); ?>
     <?php unset($_SESSION['mail']); ?>
     <?php unset($_SESSION['date']); ?>
-
-    <footer>
-        <?php $this->view("footer", $data); ?>
-    </footer>
 </body>
 </html>
 
