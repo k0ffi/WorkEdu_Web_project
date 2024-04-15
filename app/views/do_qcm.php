@@ -27,23 +27,23 @@
 
         <form method="post" >
         <label for="sujet"><h2>Sujet</h2></label>
-        <div class="sujet"><input type="text" id="sujet" name="sujet" required values="" readonly><br><br></div>
+        <div class="sujet"><input type="text" id="sujet" name="sujet" required value="<?php echo $data['cour']?>" readonly><br><br></div>
 
 
         <label for="question"><h2>Question :</h2></label>
-        <div class="form-input"><input type="text" id="question" name="question" required readonly><br><br></div>
+        <div class="form-input"><input type="text" id="question" name="question" value="<?php echo $data[0]['question']?>" readonly><br><br></div>
         
 
         <label for="proposition1"><h3>A :</h3></label> &nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="form-input"> <input type="text" id="proposition1" name="proposition1" required readonly></div>
+        <div class="form-input"> <input type="text" id="proposition1" name="proposition1" value="<?php echo $data[0]['propositions'][1]?>" readonly></div>
         
 
         <label for="proposition2"><h3>B :</h3></label>&nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="form-input"><input type="text" id="proposition2" name="proposition2" required readonly></div>
+        <div class="form-input"><input type="text" id="proposition2" name="proposition2" value="<?php echo $data[0]['propositions'][2]?>" readonly></div>
         
 
         <label for="proposition3"><h3>C :</h3></label>&nbsp;&nbsp;&nbsp;&nbsp; 
-        <div class="form-input"><input type="text" id="proposition3" name="proposition3" required readonly></div>
+        <div class="form-input"><input type="text" id="proposition3" name="proposition3" value="<?php echo $data[0]['propositions'][2]?>" readonly></div>
         
         <input type="reset"  value="effacer" class="btn-effacer" >&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="submit" value="valider" class="btn-valider">

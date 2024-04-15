@@ -10,6 +10,18 @@
 }
 
 
+.form-container-create{
+    position: relative;
+    max-width: 800px; 
+    width: 100%;
+    background: var(--first-color);
+    padding: 40px 30px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    color  : gray ; 
+}
+
+
 .form-input input[type="text"] ,
 .form-input input[type="textArea"]{
     width: 100%;
@@ -17,6 +29,7 @@
     border-radius: 10px;
     border: none;
     outline: none;
+    cursor: pointer;
 }
 .btn-valider {
     width: 20%;
@@ -48,16 +61,40 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+.btn-cree {
+    width: 20%;
+    padding: 10px;
+    margin : 20px ;
+    border: none;    
+    border-radius: 5px;
+    background-color: var(--text-color); /* Adjust color as needed */
+    color: var(--first-color);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease
+    
+}
 
 
 .btn-effacer:hover {
     background-color: #f07167 ; 
 }
-
+.btn-cree:hover {
+    background-color: #1e8449  ; 
+}
 .sujet{
     width: 10%;
     padding: 10px;
     border-radius: 10px;
     border: none;
+    outline: none;
+}
+
+.cour{
+    width: 20%;
+    padding: 10px ;
+    background-color: gray ; 
+    border-radius: 10px;
+    border: solid #1e8449 ;
     outline: none;
 }
