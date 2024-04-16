@@ -8,7 +8,7 @@ class Signup extends Controller
             $user->signup($_POST);
 
         $data['page_title'] = "Inscription";
-        $this->view("signup", $data);
+        $this->view("connection/signup", $data);
     }
 }
 

@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="<?=ASSETS?>css/elements.css">
     <link rel="stylesheet" href="<?=ASSETS?>css/style.css">
 
-    <link rel="stylesheet" href="<?=ASSETS?>css/registration.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -23,20 +21,14 @@
     </header>
 
     <main>
+
+        <?php if (isset($_SESSION['username'])) : ?>
+            <p>Bienvenue <?php echo $_SESSION['username'] ?></p>
+        <?php  endif; ?>
         
-        <div class="form-container">
-            <h2>Connexion</h2>
-            <p> <?php check_message(); ?> </p>            
-            <form method="post">
-                <div class="form-input">
-                    <input type="text" name="username" placeholder="Nom d'utilisateur">
-                </div>
-                <div class="form-input">
-                    <input type="password" name="password" placeholder="Mot de passe">
-                </div>
-                <input type="submit" value="Connexion" class="btn-signup">
-                <a class="message" href="<?=ROOT?>signup">Pas inscrit ?</a>
-            </form>
+        <div class="conteneur">
+            <h4>Mon profil</h4>
+            
         </div>
     </main>
 

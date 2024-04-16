@@ -20,21 +20,14 @@
         <script src="<?=ASSETS?>/js/header.js"></script>
     </header>
 
-    <main>
-        <h1>Aurevoir <?php echo $data['firstname'] . " (" . $data['username'] . ")"?></h1>
-        <p>Déconnexion réussie.</p>
-        <br />
-        <a href="<?=ROOT?>home">Accueil</a>
+    <main>        
+        <h1>Foire aux questions</h1>
+        <p>Si vous souhaitez poser une question, veuillez créer un nouveau fil. </p>
+        <p>Si vous souhaitez seulement aider, veuillez répondre directement sous le post de la question concernée.</p>
     </main>
+
     <footer>
         <?php $this->view("footer", $data); ?>
     </footer>
-    <?php unset($_SESSION['username']); ?>
-    <?php unset($_SESSION['firstname']); ?>
-    <?php unset($_SESSION['name']); ?>
-    <?php unset($_SESSION['password']); ?>
-    <?php unset($_SESSION['mail']); ?>
-    <?php unset($_SESSION['date']); ?>
 </body>
 </html>
-

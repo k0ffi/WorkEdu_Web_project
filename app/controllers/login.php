@@ -11,6 +11,6 @@ class Login extends Controller
         }
 
         $data['page_title'] = "Connexion";
-        $this->view("login", $data);
+        $this->view("connection/login", $data);
     }
 }
