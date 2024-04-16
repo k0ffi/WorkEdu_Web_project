@@ -28,14 +28,8 @@
             <h2>Informations de connexion</h2>
             <ul>
                 <li>
-                    <label for="">Votre nom d'utilisateur : </label>
-                    <?php echo $_SESSION['username'];?>
-                </li>
-
-
-                <li>
                     <label for="">Votre nom : </label>
-                    <?php echo $_SESSION['name'];?>
+                    <?php echo $_SESSION['lastname'];?>
                 </li>
 
                 <li>
@@ -46,6 +40,11 @@
                 <li>
                     <label for="">Votre adresse mail : </label>
                     <?php echo $_SESSION['mail'];?>
+                </li>
+
+                <li>
+                    <label for="">Votre nom d'utilisateur : </label>
+                    <?php echo $_SESSION['username'];?>
                 </li>
 
             </ul>

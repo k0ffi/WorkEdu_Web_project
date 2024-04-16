@@ -25,7 +25,7 @@ class Database
             $check = 0;
             if ($stm) $check = 1;
         } else {
-            $check = $stm->execute($data);    
+            $check = $stm->execute($data);
         }
         
         if ($check)

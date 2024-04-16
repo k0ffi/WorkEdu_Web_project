@@ -2,178 +2,111 @@
 
 class User 
 {
-
-
-    /*
-    function login($POST)
-    {
-        $DB = new Database();
-
-        $_SESSION['error'] = "";
-        if (isset($_POST['username'], $_POST['password']))
-        {
-            $arr['username'] = $_POST['username'];
-            $arr['password'] = $_POST['password'];
-            
+    function login($data) {
+        $database = new Database();
+    
+        $_SESSION['error'] = '';
+        // show($data);
+    
+        if (isset($data['username'], $data['password'])) {
+            $tab['username'] = $data['username'];
+            $tab['password'] = $data['password'];
+    
             $query = "SELECT * FROM users WHERE username = :username && password = :password LIMIT 1";
-            
-            $data = $DB->read($query, $arr);
-        
-            if (is_array($data)){
-                // connecté
-                $_SESSION['user_id'] = $data[0]->userid;
-                $_SESSION['user_url'] = $data[0]->url_address;
-
-                header("Location:" . ROOT . "home");
-                die();
+    
+            $resultat = $database->read($query, $tab);
+    
+            if (!empty($resultat)) {
+                // Il y a au moins un enregistrement trouvé
+                $_SESSION['user_id'] = $resultat[0]->id;
+                $_SESSION['lastname'] = $resultat[0]->lastname;                
+                $_SESSION['firstname'] = $resultat[0]->firstname;                
+                $_SESSION['mail'] = $resultat[0]->mail;                
+                $_SESSION['username'] = $resultat[0]->username;
+   
+                // Redirection vers la page d'accueil après connexion réussie
+                header('Location: ' . ROOT . 'home');
+                exit;
+            } else {
+                $_SESSION['error'] = "Nom d'utilisateur ou mot de passe incorrect.";
             }
-            else 
-            {
-                $_SESSION['error'] = "Nom d'utilisateur ou mot de passe incorrect";
-            }
-        }
-        else 
-        {
-            $_SESSION['error'] = "Entrez un nom d'utilisateur et un mot de passe valide";
-        }
-    }
-
-    function signup($POST)
-    {
-        $DB = new Database();
-
-        $_SESSION['error'] = "";
-        if (isset($_POST['username'], $_POST['password']))
-        {
-            $arr['username'] = $_POST['username'];
-            $arr['password'] = $_POST['password'];
-            $arr['email'] = $_POST['email'];
-            
-            $query = "INSERT INTO users (username, password, email) VALUES (:username, :password, :email)";
-            
-            $data = $DB->write($query, $arr);
-        
-            if ($data)
-            {
-                header("Location:" . ROOT . "cours");
-                die();
-            }
-        }
-        else 
-        {
-            $_SESSION['error'] = "Entrez un nom d'utilisateur et un mot de passe valide";
-        }
-    }
-
-
-    */
-
-    public function signup($data)
-    {
-        $_SESSION['error'] = "";
-    
-        if(isset($data['name'], $data['firstname'], $data['mail'], $data['password'])) {
-            $name = $data['name'];
-            $fname = $data['firstname'];
-            $mail = $data['mail'];
-            $pass = $data['password'];
-            
-            try {
-                // Connexion BD
-                $pdo = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-                // Vérification si l'utilisateur existe déjà
-                $query = "SELECT COUNT(*) AS num_users FROM users WHERE mail = :mail";
-                $statement = $pdo->prepare($query);
-                $statement->execute(['mail' => $mail]);
-                $result = $statement->fetch(PDO::FETCH_OBJ);
-        
-                if ($result->num_users > 0) {
-                    $_SESSION['error'] = "L'utilisateur avec cette adresse e-mail existe déjà.";
-                    return; // Sortie de la fonction si l'utilisateur existe déjà
-                }
-                
-                // Création du nom d'utilisateur
-                $initials = substr($name, 0, 1) . substr($fname, 0, 1);
-    
-                $random_numbers = "";
-                for ($i = 0; $i < 6; $i++) {
-                    $random_numbers .= mt_rand(0, 9);
-                }
-    
-                $username = $initials . $random_numbers;
-    
-                // Insertion de l'utilisateur dans la base de données
-                $query = "INSERT INTO users (lastname, firstname, mail, username, password, registration_date) 
-                          VALUES (:lastname, :firstname, :mail, :username, :password, NOW())";
-                $statement = $pdo->prepare($query);
-                $success = $statement->execute([
-                    'lastname' => $name,
-                    'firstname' => $fname,
-                    'mail' => $mail,
-                    'username' => $username,
-                    'password' => $pass
-                ]);
-    
-                if ($success) {
-                    $_SESSION['username'] = $username;
-                    $_SESSION['firstname'] = $fname;
-                    $_SESSION['name'] = $name;
-                    $_SESSION['mail'] = $mail;
-                    $_SESSION['password'] = $pass;
-                    header("Location:" . ROOT . "infosuser");
-                    exit; // Sortie après l'insertion réussie
-                } else {
-                    $_SESSION['error'] = "Une erreur est survenue lors de l'inscription.";
-                }
-            } catch (PDOException $e) {
-                $_SESSION['error'] = "Erreur : " . $e->getMessage();
-            }
+        } else {
+            $_SESSION['error'] = "Veuillez remplir les champs obligatoires.";
         }
     }
     
-
-
-
-    public function login($data)
-    {
-        $_SESSION['error'] = "";
-        if(isset($data['username'], $data['password'])) {
-            $uname = $data['username'];
-            $pass = $data['password'];
-        
-            try {
-                $pdo = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-                $query = "SELECT * FROM users WHERE username = :username AND password = :password";
-                $statement = $pdo->prepare($query);
-                $statement->execute(['username' => $uname, 'password' => $pass]);
-                $user = $statement->fetch(PDO::FETCH_OBJ);  
-        
-                if ($user && $pass === $user->password) {
-                   // echo "Connexion réussie pour l'utilisateur : " . $user['username'];
-                    header("Location:" . ROOT ."profil");
-                    $_SESSION['username'] = $user->username;
-                    $_SESSION['name'] = $user->lastname;  
-                    $_SESSION['firstname'] = $user->firstname;
-                    $_SESSION['mail'] = $user->email;  
-                    $_SESSION['password'] = $user->password;
-                    $_SESSION['date'] = $user->registation_date;
-                    exit;
-                } else {
-                    // echo "<p>" . "Nom d'utilisateur ou mot de passe incorrect." . "</p>";
-                    $_SESSION['error'] = "Nom d'utilisateur ou mot de passe incorrect";
-                }
-            } catch (PDOException $e) {
-                echo "Erreur : " . $e->getMessage();
+    public function signup($data) {
+        $_SESSION['error'] = '';
+    
+        // Vérifier les données requises
+        $requiredFields = ['name', 'firstname', 'mail', 'password'];
+        foreach ($requiredFields as $field) {
+            if (empty($data[$field])) {
+                $_SESSION['error'] = "Veuillez remplir tous les champs.";
+                return;
             }
         }
+    
+        // Valider l'adresse e-mail
+        if (!filter_var($data['mail'], FILTER_VALIDATE_EMAIL)) {
+            $_SESSION['error'] = "Adresse e-mail invalide.";
+            return;
+        }
+    
+        $database = new Database();
+    
+        // Vérifier si l'utilisateur existe déjà
+        $query = "SELECT COUNT(*) AS cptUsers FROM users WHERE mail = :mail";
+        $params = [':mail' => $data['mail']];
+        $result = $database->read($query, $params);
+    
+        if ($result && $result[0]->cptUsers > 0) {
+            $_SESSION['error'] = "L'utilisateur avec cette adresse e-mail existe déjà.";
+            return;
+        }
+    
+        // Générer un nom d'utilisateur unique
+        $initials = substr($data['name'], 0, 1) . substr($data['firstname'], 0, 1);
+        $randomNumbers = "";
+        for ($i = 0; $i < 6; $i++) {
+            $randomNumbers .= mt_rand(0, 9);
+        }
+        $username = $initials . $randomNumbers;
+    
+        // Hasher le mot de passe
+        // $hashedPassword = password_hash($data['password'], PASSWORD_DEFAULT);
+    
+        // Insérer l'utilisateur dans la base de données
+        $insertQuery = "INSERT INTO users (username, password, mail, lastname, firstname) VALUES (:username, :password, :mail, :lastname, :firstname)";
+        $insertParams = [
+            ':username' => $username,
+            // ':password' => $hashedPassword,
+            ':password' => $data['password'],
+            ':mail' => $data['mail'],
+            ':lastname' => $data['name'],     
+            ':firstname' => $data['firstname']
+        ];
+    
+        $success = $database->write($insertQuery, $insertParams);
+    
+        if ($success) {
+            $_SESSION['user_id'] = $data['user_id'];
+            $_SESSION['lastname'] = $data['name'];                
+            $_SESSION['firstname'] = $data['firstname'];                
+            $_SESSION['mail'] = $data['mail'];                
+            $_SESSION['username'] = $username;
+            $_SESSION['password'] = $data['password'];
+            // Redirection après inscription réussie
+            header("Location: " . ROOT . "infosuser");
+            exit();
+        } else {
+            $_SESSION['error'] = "Erreur lors de l'enregistrement de l'utilisateur.";
+        }
     }
+    
+    
 
-    function check_logged_in()
-    {
+    function check_logged_in() {
         $DB = new Database();
         if (isset($_SESSION['user_url']))
         {

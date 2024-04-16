@@ -25,6 +25,7 @@
     <main>
         <div class="form-container">
             <h2>Inscription</h2>
+            <p> <?php check_message(); ?> </p>            
             <form method="post">
                 <div class="form-input">
                     <input type="text" name="name" placeholder="nom">
