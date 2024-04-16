@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="<?=ASSETS?>css/elements.css">
     <link rel="stylesheet" href="<?=ASSETS?>css/style.css">
 
+    <link rel="stylesheet" href="<?=ASSETS?>css/registration.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
-<body>
+<body data-root="<?= ROOT ?>">
     <header>
         <?php $this->view("header", $data); ?>
         <script src="<?=ASSETS?>/js/header.js"></script>
     </header>
-
-    <main>        
-        <h1>Foire aux questions</h1>
-        <p>Si vous souhaitez poser une question, veuillez créer un nouveau fil. </p>
-        <p>Si vous souhaitez seulement aider, veuillez répondre directement sous le post de la question concernée.</p>
+    
+    <main>
+        <p>Veuillez vous connecter tout d'abord. Redirection dans <span id='countdown'>3</span> secondes...</p>
     </main>
 
     <footer>
@@ -31,3 +31,4 @@
     </footer>
 </body>
 </html>
+<script src="<?=ASSETS?>/js/connection/redirection.js"></script>

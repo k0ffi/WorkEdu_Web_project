@@ -91,7 +91,7 @@ class User
     
         if ($success) {
             $_SESSION['user_id'] = $data['user_id'];
-            $_SESSION['lastname'] = $data['name'];                
+            $_SESSION['lastname'] = $data['name'];
             $_SESSION['firstname'] = $data['firstname'];                
             $_SESSION['mail'] = $data['mail'];                
             $_SESSION['username'] = $username;

@@ -10,7 +10,7 @@
             <li><a href="<?=ROOT?>qcm">QCM</a></li>
             <?php  endif; ?>
             
-            <li><a href="<?=ROOT?>faq">FAQ</a></li>
+            <li><a href="<?=ROOT?>forum">Forum</a></li>
 
         </ul>
     </div>
@@ -51,7 +51,3 @@
 
     </ul>
 </div>
-
-<script>
-
-</script>
