@@ -23,7 +23,7 @@
     </header>
     
     <main>
-        <p>Veuillez vous connecter tout d'abord. Redirection dans <span id='countdown'>3</span> secondes...</p>
+        <h2>Veuillez vous connecter tout d'abord. Redirection dans <span id='countdown'>3</span> secondes...</h2>
     </main>
 
     <footer>
