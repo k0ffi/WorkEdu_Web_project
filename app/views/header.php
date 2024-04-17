@@ -17,7 +17,7 @@
 
     <?php if (!(isset($_SESSION['username']))) : ?>
 
-        <a href="<?=ROOT?>login" class="header-login-btn">Se connecter</a>
+        <a href="<?=ROOT?>connection" class="header-login-btn">Se connecter</a>
         
     <?php  endif; ?>
 

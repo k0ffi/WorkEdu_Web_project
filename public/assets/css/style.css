@@ -36,3 +36,6 @@ main {
     padding: 125px 50px 50px;
     flex-grow: 1;
 }
+a {
+    text-decoration: none;
+}

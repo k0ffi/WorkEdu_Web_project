@@ -11,6 +11,6 @@ class Loginadmin extends Controller
         }
 
         $data['page_title'] = "Connexion";
-        $this->view("loginadmin", $data);
+        $this->view("connection/loginadmin", $data);
     }
 }

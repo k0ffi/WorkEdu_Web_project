@@ -8,7 +8,7 @@ class Signupadmin extends Controller
             $user->signup($_POST);
 
         $data['page_title'] = "Inscription";
-        $this->view("signupadmin", $data);
+        $this->view("connection/signupadmin", $data);
     }
 }
 
