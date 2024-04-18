@@ -11,4 +11,3 @@ class Signupadmin extends Controller
         $this->view("connection/signupadmin", $data);
     }
 }
-

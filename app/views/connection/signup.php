@@ -39,6 +39,22 @@
                 <div class="form-input">
                     <input type="password" name="password" placeholder="Mot de passe">
                 </div>
+                <div class="form-input">
+                <label for="filiere">Choisir sa filière :</label>
+                <select name="filiere" id="filiere">
+                    <?php $filieres = $data['filieres']; ?>
+
+                    <?php if (isset($filieres) && is_array($filieres)) : ?>
+                        <?php foreach ($filieres as $filiere) : ?>
+                            <option value="<?= $filiere['id'] ?>"><?= $filiere['nom'] ?></option>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <option value="">Aucune filière disponible</option>
+                    <?php endif; ?>
+                </select>
+            </div>
+
+
                 <input type="submit" value="Inscription" class="btn-signup">
                 <a class="message" href="<?=ROOT?>login">Déjà inscrit ?</a>
             </form>

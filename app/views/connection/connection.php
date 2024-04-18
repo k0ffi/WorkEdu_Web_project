@@ -25,11 +25,10 @@
     <main>
         
         <div class="form-container">
-            <h4>Se Connecter au moyen du compte :</h4>     <br><br><br>    
-           
-            <a href="<?=ROOT?>login" class="btn-connection">Etudiant </a><br><br><br><br>
-        <a href="<?=ROOT?>loginadmin" class="btn-connection">Administrateur </a>
-               
+            <h4>Se Connecter en tant que :</h4>     <br><br><br>    
+            <a href="<?=ROOT?>login" class="btn-connection">Etudiant </a></li>
+            <a href="<?=ROOT?>loginadmin" class="btn-connection">Administrateur</a>
+            <?php $_SESSION['error'] = ''; ?>
         </div>
     </main>
 

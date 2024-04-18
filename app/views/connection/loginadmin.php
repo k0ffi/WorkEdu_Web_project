@@ -35,7 +35,7 @@
                     <input type="password" name="password" placeholder="Mot de passe">
                 </div>
                 <input type="submit" value="Connexion" class="btn-signup">
-                <a class="message" href="<?=ROOT?>signupadmin">Pas inscrit ?</a>
+                <a href="<?=ROOT?>connection/connection">Retour</a>
             </form>
         </div>
     </main>

@@ -6,7 +6,7 @@ class Login extends Controller
     {
          if (isset($_POST['username']) && isset($_POST['password']))
         {
-            $user = $this->loadModel("user");
+            $user = $this->loadModel("modelUser");
             $user->login($_POST);
         }
 

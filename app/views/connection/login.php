@@ -37,6 +37,7 @@
                 <input type="submit" value="Connexion" class="btn-signup">
                 <a class="message" href="<?=ROOT?>signup">Pas inscrit ?</a>
             </form>
+            <a href="<?=ROOT?>connection/connection">Retour</a>
         </div>
     </main>
 

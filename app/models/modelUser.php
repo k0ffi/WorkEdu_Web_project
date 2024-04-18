@@ -1,6 +1,6 @@
 <?php
 
-class User 
+class ModelUser 
 {
     function login($data) {
         $database = new Database();
@@ -23,6 +23,8 @@ class User
                 $_SESSION['firstname'] = $resultat[0]->firstname;                
                 $_SESSION['mail'] = $resultat[0]->mail;                
                 $_SESSION['username'] = $resultat[0]->username;
+                $_SESSION['filiere_id'] = $resultat[0]->filiere_id;
+
    
                 // Redirection vers la page d'accueil après connexion réussie
                 header('Location: ' . ROOT . 'home');
@@ -39,7 +41,7 @@ class User
         $_SESSION['error'] = '';
     
         // Vérifier les données requises
-        $requiredFields = ['name', 'firstname', 'mail', 'password'];
+        $requiredFields = ['name', 'firstname', 'mail', 'password', 'filiere'];
         foreach ($requiredFields as $field) {
             if (empty($data[$field])) {
                 $_SESSION['error'] = "Veuillez remplir tous les champs.";
@@ -73,18 +75,16 @@ class User
         }
         $username = $initials . $randomNumbers;
     
-        // Hasher le mot de passe
-        // $hashedPassword = password_hash($data['password'], PASSWORD_DEFAULT);
-    
         // Insérer l'utilisateur dans la base de données
-        $insertQuery = "INSERT INTO users (username, password, mail, lastname, firstname) VALUES (:username, :password, :mail, :lastname, :firstname)";
+        $insertQuery = "INSERT INTO users (username, password, mail, lastname, firstname, filiere_id) VALUES (:username, :password, :mail, :lastname, :firstname, :filiere)";
         $insertParams = [
             ':username' => $username,
             // ':password' => $hashedPassword,
             ':password' => $data['password'],
             ':mail' => $data['mail'],
             ':lastname' => $data['name'],     
-            ':firstname' => $data['firstname']
+            ':firstname' => $data['firstname'],
+            ':filiere' => $data['filiere']
         ];
     
         $success = $database->write($insertQuery, $insertParams);
@@ -96,6 +96,7 @@ class User
             $_SESSION['mail'] = $data['mail'];                
             $_SESSION['username'] = $username;
             $_SESSION['password'] = $data['password'];
+            $_SESSION['filiere_id'] = $data['filiere'];
             // Redirection après inscription réussie
             header("Location: " . ROOT . "infosuser");
             exit();
@@ -104,8 +105,21 @@ class User
         }
     }
     
+    public function getAllFilieres() {
+        $database = new Database();
+        $query = "SELECT id, nom FROM filiere";
+        $result = $database->read($query);
     
-
+        $filieres = [];
+        if ($result) {
+            foreach ($result as $filiere) {
+                $filieres[] = ['id' => $filiere->id, 'nom' => $filiere->nom];
+            }
+        }
+        return $filieres;
+    }
+    
+    
     function check_logged_in() {
         $DB = new Database();
         if (isset($_SESSION['user_url']))
@@ -126,5 +140,20 @@ class User
             }
         }
         return false;
+    }
+
+    public function getUserById($user_id) {
+        $database = new Database();
+        $query = "SELECT u.*, f.nom AS filiere_nom FROM users u
+                  LEFT JOIN filiere f ON u.filiere_id = f.id
+                  WHERE u.id = :user_id";
+        $params = [':user_id' => $user_id];
+        $result = $database->read($query, $params);
+
+        if ($result && count($result) > 0) {
+            return $result[0]; // Retourne le premier utilisateur trouvé
+        } else {
+            return null; // Aucun utilisateur trouvé
+        }
     }
 }

@@ -35,6 +35,7 @@
     <?php unset($_SESSION['password']); ?>
     <?php unset($_SESSION['mail']); ?>
     <?php unset($_SESSION['date']); ?>
+    <?php if(isset($_SESSION['usernameA'], $_SESSION['passwordA'])) unset($_SESSION['usernameA']); unset($_SESSION['passwordA']); ?>
 </body>
 </html>
 

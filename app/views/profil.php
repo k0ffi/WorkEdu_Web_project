@@ -21,14 +21,15 @@
     </header>
 
     <main>
-
-        <?php if (isset($_SESSION['username'])) : ?>
-            <p>Bienvenue <?php echo $_SESSION['username'] ?></p>
-        <?php  endif; ?>
-        
-        <div class="conteneur">
-            <h4>Mon profil</h4>
-            
+        <h1>Mon Profil</h1>
+        <div>
+            <p><strong>Nom :</strong> <?= $data['user']->lastname ?></p>
+            <p><strong>Prénom :</strong> <?= $data['user']->firstname ?></p>
+            <p><strong>Adresse Email :</strong> <?= $data['user']->mail ?></p>
+            <p><strong>Filière :</strong> <?= $data['user']->filiere_nom ?></p>
+            <p><strong>Mot de passe :</strong> <?= $data['user']->password ?></p>
+            <p><strong>Date de création du compte :</strong> <?= $data['user']->registration_date ?></p>
+            <!-- Ajoutez d'autres informations du profil ici -->
         </div>
     </main>
 
