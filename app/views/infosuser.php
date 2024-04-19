@@ -23,7 +23,7 @@
         <div class="user_infos">
             <h1>Bienvenue <?php echo $_SESSION['firstname']; ?> !</h1>
             
-            <p>Vous êtes maintenant inscris sur notre site. Pour vous connecter vous aurez besoin de votre nom d'utilisateur et mot de passe. </p>
+            <p>Vous êtes maintenant inscrit sur notre site. Pour vous connecter vous aurez besoin de votre nom d'utilisateur et mot de passe. </p>
 
             <h2>Informations de connexion</h2>
             <ul>

@@ -4,12 +4,21 @@
         <ul>
             <li><a href="<?=ROOT?>home">Accueil</a></li>
 
-            <?php if (isset($_SESSION['username'])) : ?>
+            <?php if (isset($_SESSION['admin'])) : ?>
+
+            <?php if (isset($_SESSION['username'])&& $_SESSION['admin']==0) : ?>
             <li><a href="<?=ROOT?>cours">Mes Cours</a></li>
             <li><a href="<?=ROOT?>profil">Mon profil</a></li>
             <li><a href="<?=ROOT?>qcm">QCM</a></li>
             <?php  endif; ?>
             
+            <?php if (isset($_SESSION['username'])&& $_SESSION['admin']==1): ?>
+            <li><a href="<?=ROOT?>upload">Cours</a></li>
+            <li><a href="<?=ROOT?>profil">Mon profil</a></li>
+            <li><a href="<?=ROOT?>qcm">QCM</a></li>
+            <li><a href="<?=ROOT?>liste">Liste Etudiants</a></li>
+            <?php  endif; ?>
+            <?php  endif; ?>
             <li><a href="<?=ROOT?>forum">Forum</a></li>
 
         </ul>
@@ -17,7 +26,7 @@
 
     <?php if (!(isset($_SESSION['username']))) : ?>
 
-        <a href="<?=ROOT?>connection/connection" class="header-login-btn">Se connecter</a>
+        <a href="<?=ROOT?>login" class="header-login-btn">Se connecter</a>
         
     <?php  endif; ?>
 

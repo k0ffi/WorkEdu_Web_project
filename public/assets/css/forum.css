@@ -1,0 +1,125 @@
+.forum-discussion {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.forum-question {
+    margin-bottom: 15px;
+}
+
+
+.forum-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.username {
+    color: var(--first-color);
+    font-weight: bold;
+}
+
+.date-desc {
+    font-size: 0.8em;
+    color: #666;
+}
+
+
+.forum-item-body {
+    font-size: 1.1em;
+    color: var(--first-color);
+    line-height: 1.6;
+}
+
+.replies-container {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.reply-item {
+    margin-bottom: 15px;
+    border-left: 3px solid var(--first-color);
+    padding-left: 10px;
+}
+
+.reponse-username {
+    font-weight: bold;
+    color: var(--first-color);
+}
+
+.reponse-text {
+    margin-top: 5px;
+    color: #333;
+}
+
+.reponse-date {
+    font-size: 0.8em;
+    color: #666;
+}
+
+
+form {
+    margin-top: 15px;
+}
+form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+form input[type="submit"] {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+    background-color: var(--first-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #4CAF50;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.main {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+}

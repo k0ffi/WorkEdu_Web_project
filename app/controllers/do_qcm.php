@@ -8,7 +8,7 @@ class Do_qcm extends Controller
         $cour="informatique" ; 
         $data['cour'] = $cour ; 
         $modelQCM  =  $this->loadModel("modelQCM") ; 
-        $QCM  =$modelQCM->recupererQCM($cour , "/Applications/XAMPP/xamppfiles/htdocs/projetWEB/app/models/xml") ;
+        $QCM  =$modelQCM->recupererQCM($cour , "/Applications/XAMPP/xamppfiles/htdocs/WorkEdu_Web_project/app/models/xml") ;
         foreach($QCM as $element)
         {   $qcm['question'] = $element['question'] ; 
             $qcm['reponse'] = $element['reponse'] ;

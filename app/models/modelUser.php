@@ -24,7 +24,8 @@ class ModelUser
                 $_SESSION['mail'] = $resultat[0]->mail;                
                 $_SESSION['username'] = $resultat[0]->username;
                 $_SESSION['filiere_id'] = $resultat[0]->filiere_id;
-
+                $_SESSION['filiere_id'] = $resultat[0]->filiere_id;
+                $_SESSION['admin'] = $resultat[0]->admin;
    
                 // Redirection vers la page d'accueil après connexion réussie
                 header('Location: ' . ROOT . 'home');
@@ -118,7 +119,7 @@ class ModelUser
         }
         return $filieres;
     }
-    
+
     
     function check_logged_in() {
         $DB = new Database();

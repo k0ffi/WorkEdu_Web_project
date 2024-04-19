@@ -27,7 +27,9 @@
         <?php  endif; ?> -->
         
         <h1>QCM</h1>
+        <?php if (isset($_SESSION['username'])&& $_SESSION['admin']==1) : ?>
         <a href="<?=ROOT?>createqcm">Créer un QCM</a>
+        <?php  endif; ?>
         <a href="<?=ROOT?>do_qcm">Voir les QCM</a>
 
     </main>

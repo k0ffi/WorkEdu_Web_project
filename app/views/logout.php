@@ -21,7 +21,7 @@
     </header>
 
     <main>
-        <h1>Aurevoir <?php echo $data['firstname'] . " (" . $data['username'] . ")"?></h1>
+        <h1>Au revoir <?php echo $data['firstname'] . " (" . $data['username'] . ")"?></h1>
         <p>Déconnexion réussie.</p>
         <br />
         <a href="<?=ROOT?>home">Accueil</a>
